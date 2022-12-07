@@ -27,7 +27,6 @@ def calourieCounting(input):
     for key, value in sortedElves:
         elveCalArr.append(value)
     elveMax = sum(elveCalArr[0:3])
-    print(elveCalArr[0:3])
     return elveMax
 
 if __name__ == "__main__":
