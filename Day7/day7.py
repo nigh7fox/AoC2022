@@ -10,18 +10,13 @@ def calculateDirectoriesTotal(fileSizeDict: dict, currentDirString):
     for pathName, filesDict in fileSizeDict.items():
         pathSum = sum([int(fileSize) for fileSize in filesDict.values()])
         if (pathName in folderFileSizes and pathName == currentDirString):
-            # print('%s already exists. current path sum %d' % (pathName, pathSum))
             folderFileSizes[currentDirString] = folderFileSizes[currentDirString] + pathSum
         elif (pathName not in folderFileSizes):
-            # print('Adding new path %s' % (pathName))
             folderFileSizes[pathName] = pathSum
-        
-            # print('Recalculating total %s' % (pathName))
             for pName, pTotal in folderFileSizes.items():
                 if (pName == pathName):
                     pass
                 elif (str(pathName).startswith(pName)):
-                    # print('pName %s is in pathName %s adding %d' % (pName, pathName, pathSum))
                     folderFileSizes[pName] = folderFileSizes[pName] + pathSum
 
 
@@ -31,7 +26,6 @@ def changeDirectory(cmd, cd: list, currentLsOuput, directoryData: dict):
     if (cdLocation == '..'):
         if (len(currentDirectory) != 1):
             currentDirectory.pop(len(currentDirectory)-1)
-            # print('Going up one directory %a' % (currentDirectory))
         else:
             print('Already at top directory')
     else:
